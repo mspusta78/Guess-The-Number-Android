@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity_question">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/topBar"
+            layout="@layout/layout_top_standard_bar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="28dp"
+                android:text="True or False"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTrue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cornerRadius="10dp"
+                android:layout_marginTop="10dp"
+                android:padding="15dp"
+                android:text="Choose True"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFalse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cornerRadius="10dp"
+                android:layout_marginTop="10dp"
+                android:padding="15dp"
+                android:text="Choose False"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

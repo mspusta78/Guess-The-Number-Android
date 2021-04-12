@@ -4,22 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/holo_blue_light"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPressMe"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationLoader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            app:lottie_rawRes="@raw/winner"
+            app:lottie_loop="true"
+            android:visibility="gone"/>
+
+        <ProgressBar
+            android:id="@+id/loading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cornerRadius="10dp"
-            android:layout_marginTop="10dp"
-            android:padding="15dp"
-            android:text="I was pressed"/>
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_blue_light"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="28dp"
+                android:text="Guess The Number"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/dice" />
+
+            <LinearLayout
+                android:id="@+id/layoutPlayerInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="22dp"
+                    android:text="Welcome"/>
+
+                <TextView
+                    android:id="@+id/playerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:text="Player 1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutLevel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cornerRadius="10dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="15dp"
+                    android:text="Level 1"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnHighScore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cornerRadius="10dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="15dp"
+                    android:visibility="visible"
+                    android:text="High Score"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </layout>
