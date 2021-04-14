@@ -28,28 +28,27 @@ class MainActivity : AppCompatActivity() {
 
         binding.loading.visibility = View.VISIBLE
 
-        binding.btnHighScore.setOnClickListener {
-            val intent = Intent(this, activity_high_score::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        binding.level1.setOnClickListener {
+            val intent = Intent(this, activity_game_view::class.java)
+            intent.putExtra("level", 1)
             startActivity(intent)
         }
 
-
-        if (guessedNumber > 100){
-            // your guess is too high
+        binding.level2.setOnClickListener {
+            val intent = Intent(this, activity_game_view::class.java)
+            intent.putExtra("level", 2)
+            startActivity(intent)
         }
 
-        if (guessedNumber < 100){
-            // your guess is too low
+        binding.level3.setOnClickListener {
+            val intent = Intent(this, activity_game_view::class.java)
+            intent.putExtra("level", 3)
+            startActivity(intent)
         }
 
-        if (guessedNumber == 100){
-            //you won
-        }
-
-        if (guessedNumber == 100 && numberOfTries > 0){
-            // congratulations you guessed the number
-
+        binding.btnHighScore.setOnClickListener {
+            val intent = Intent(this, activity_high_score::class.java)
+            startActivity(intent)
         }
 
         getIncomingIntent()
