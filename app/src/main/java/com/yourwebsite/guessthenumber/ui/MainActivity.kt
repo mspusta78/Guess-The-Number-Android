@@ -1,18 +1,14 @@
-package com.yourwebsite.guessthenumber
+package com.yourwebsite.guessthenumber.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
+import com.yourwebsite.guessthenumber.R
+import com.yourwebsite.guessthenumber.classes.CurrentAppInfo
 import com.yourwebsite.guessthenumber.databinding.ActivityMainBinding
 import okhttp3.*
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import java.io.IOException
-import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -52,11 +48,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         getIncomingIntent()
-
     }
 
-    private fun getIncomingIntent(){
+    private fun getIncomingIntent() {
+        if (intent.hasExtra("playerName")) {
+            val playerName = intent.getStringExtra("playerName")
+            binding.layoutPlayerInfo.visibility = View.VISIBLE
+            binding.playerName.text = playerName
 
+            CurrentAppInfo.playerName = playerName.toString()
+        }
     }
+
+
 
 }

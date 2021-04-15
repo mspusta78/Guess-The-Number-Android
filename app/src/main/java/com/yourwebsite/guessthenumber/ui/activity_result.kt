@@ -1,9 +1,9 @@
-package com.yourwebsite.guessthenumber
+package com.yourwebsite.guessthenumber.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.yourwebsite.guessthenumber.databinding.ActivityQuestionBinding
+import com.yourwebsite.guessthenumber.R
 import com.yourwebsite.guessthenumber.databinding.ActivityResultBinding
 
 class activity_result : AppCompatActivity() {

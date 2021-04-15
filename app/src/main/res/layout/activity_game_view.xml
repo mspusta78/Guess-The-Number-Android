@@ -2,142 +2,231 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activity_game_view">
+    tools:context=".ui.activity_game_view">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/layoutTopBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_margin="25dp">
-
-            <TextView
-                android:id="@+id/endGame"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="End Game"
-                android:maxLines="1"
-                android:layout_marginRight="30dp"
-                android:layout_centerVertical="true"
-                android:textColor="@android:color/holo_red_dark"
-                android:textSize="16dp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/barTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Guess the Number"
-                android:textAllCaps="true"
-                android:textAlignment="center"
-                android:maxLines="1"
-                android:autoSizeTextType="uniform"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:textColor="@android:color/black"
-                android:textSize="16dp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/txtScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="Score: 0"
-                android:maxLines="1"
-                android:layout_marginLeft="30dp"
-                android:layout_centerVertical="true"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
-
-
-        </RelativeLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtChooseNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                android:text="Choose Number"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/guessedNumberInputLayout"
-                style="@style/TextInputLayoutStyle"
+            <RelativeLayout
+                android:id="@+id/layoutTopBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:textSize="18sp"
-                android:enabled="false">
+                android:layout_alignParentTop="true"
+                android:layout_margin="25dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/guessedNumberEditText"
+                <TextView
+                    android:id="@+id/endGame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="End Game"
+                    android:maxLines="1"
+                    android:layout_marginRight="30dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/barTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guess the Number"
+                    android:textAllCaps="true"
+                    android:textAlignment="center"
+                    android:maxLines="1"
+                    android:autoSizeTextType="uniform"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="Score: 0"
+                    android:maxLines="1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtChooseNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:text="Choose Number"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/guessedNumberInputLayout"
+                    style="@style/TextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:textAlignment="center"
-                    android:textColor="@color/black" />
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:textSize="18sp"
+                    android:enabled="false">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/guessedNumberEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:textAlignment="center"
+                        android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/txtNumberChosen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center"
-                android:textColor="@android:color/holo_red_dark"
-                android:textSize="15dp"
-                android:text="You entered #20 but its to high"
-                android:visibility="gone"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnGuess"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                app:cornerRadius="10dp"
-                android:layout_marginTop="10dp"
-                android:padding="15dp"
-                android:backgroundTint="@android:color/holo_green_light"
-                android:textColor="@color/white"
-                android:text="Guess The Number"/>
+                <TextView
+                    android:id="@+id/txtNumberChosen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="15dp"
+                    android:text="You entered #20 but its to high"
+                    android:visibility="gone"/>
 
-            <TextView
-                android:id="@+id/txtNumberOfTries"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                android:text="Number of tries left: 3" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGuess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    app:cornerRadius="10dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="15dp"
+                    android:backgroundTint="@android:color/holo_green_light"
+                    android:textColor="@color/white"
+                    android:text="Guess The Number"/>
 
-            <include android:id="@+id/numberPad" layout="@layout/layout_number_pad"/>
+                <TextView
+                    android:id="@+id/txtNumberOfTries"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:text="Number of tries left: 3" />
+
+                <include android:id="@+id/numberPad" layout="@layout/layout_number_pad"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewWin"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_margin="15dp"
+            android:layout_centerInParent="true"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="10dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:text="Congratulations"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:text="You Guessed the Number!"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="13dp"
+                    android:text="Would you like to play again?"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnPlayAgain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:layout_marginRight="10dp"
+                        app:cornerRadius="10dp"
+                        android:padding="15dp"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/green"
+                        android:text="Play Again"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnEndGame"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        app:cornerRadius="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:padding="15dp"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@android:color/holo_red_dark"
+                        android:text="End Game"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
 
 
 

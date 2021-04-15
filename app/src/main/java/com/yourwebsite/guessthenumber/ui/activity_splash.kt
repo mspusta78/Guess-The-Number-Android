@@ -1,10 +1,10 @@
-package com.yourwebsite.guessthenumber
+package com.yourwebsite.guessthenumber.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.yourwebsite.guessthenumber.databinding.ActivityMainBinding
+import com.yourwebsite.guessthenumber.R
 import com.yourwebsite.guessthenumber.databinding.ActivitySplashBinding
 
 class activity_splash : AppCompatActivity() {
@@ -20,6 +20,7 @@ class activity_splash : AppCompatActivity() {
             }else{
                 //Your code here
                 val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("playerName", name.toString())
                 startActivity(intent)
             }
         }

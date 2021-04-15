@@ -1,4 +1,4 @@
-package com.yourwebsite.guessthenumber
+package com.yourwebsite.guessthenumber.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,9 @@ import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
+import com.yourwebsite.guessthenumber.ItunesItem
+import com.yourwebsite.guessthenumber.ItunesResult
+import com.yourwebsite.guessthenumber.R
 import com.yourwebsite.guessthenumber.adapters.ItunesItemAdapter
 import com.yourwebsite.guessthenumber.databinding.ActivityItunesResultsBinding
 import okhttp3.*

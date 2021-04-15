@@ -1,20 +1,27 @@
-package com.yourwebsite.guessthenumber
+package com.yourwebsite.guessthenumber.ui
 
-import android.content.Intent
+import android.content.Context
 import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.gson.JsonObject
+import com.yourwebsite.guessthenumber.R
+import com.yourwebsite.guessthenumber.classes.CurrentAppInfo
 import com.yourwebsite.guessthenumber.databinding.ActivityGameViewBinding
-import com.yourwebsite.guessthenumber.databinding.ActivityResultBinding
-import kotlin.math.max
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import java.io.IOException
 
 class activity_game_view : AppCompatActivity() {
 
     private lateinit var binding: ActivityGameViewBinding
+    var mOkHttpClient = OkHttpClient()
 
     var correctNumber = 0
     var maxRandomNumber = 0
@@ -116,6 +123,7 @@ class activity_game_view : AppCompatActivity() {
 
     private fun generateRandomNumber(){
         correctNumber = (1..maxRandomNumber).random()
+        Log.d("GameView", "generateRandomNumber: correctNumber = $correctNumber")
     }
 
     private fun setGuessNumber(number: String){
@@ -148,12 +156,23 @@ class activity_game_view : AppCompatActivity() {
                     score += 1
                     binding.txtScore.text = "Score: $score"
                     resetGame()
-                    //Show Winning Alert
+                    showWinDialog()
                 }
-            }else{
-                //Show Game over Alert
             }
 
+        }
+    }
+
+    private fun showWinDialog(){
+        binding.cardViewWin.visibility = View.VISIBLE
+
+        binding.btnPlayAgain.setOnClickListener {
+            binding.cardViewWin.visibility = View.GONE
+            resetGame()
+        }
+
+        binding.btnEndGame.setOnClickListener {
+            finish()
         }
     }
 
@@ -180,13 +199,17 @@ class activity_game_view : AppCompatActivity() {
             .setPositiveButton("Play Again") { dialog, which ->
                 // Respond to positive button press
                 dialog.dismiss()
-                resetGame()
             }
             .setCancelable(false)
             .show()
     }
 
     private fun resetGame(){
+        //Call Post API to update high score
+        if (checkInternetStatus()){
+            updateHighScore()
+        }
+
         generateRandomNumber()
         numberOfTries = 3
         binding.txtNumberOfTries.visibility = View.GONE
@@ -194,6 +217,49 @@ class activity_game_view : AppCompatActivity() {
         guessedNumber = ""
         binding.guessedNumberEditText.setText(guessedNumber)
         binding.txtNumberChosen.setTextColor(Color.RED)
+    }
+
+    private fun updateHighScore(){
+        val postData = JsonObject()
+        postData.addProperty("displayName", CurrentAppInfo.playerName)
+        postData.addProperty("score", score)
+        val JSON = "application/json; charset=utf-8".toMediaTypeOrNull()
+        val postBody = RequestBody.create(JSON, postData.toString())
+
+        val get = Request.Builder()
+            .url("https://guessthenumber123.web.app/api/highscore")
+            .post(postBody)
+            .build()
+
+        mOkHttpClient.newCall(get).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println("error")
+                println(e)
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val responseBody = response.body?.string();
+                Log.d("GameView", "onResponse: response: $responseBody")
+            }
+        })
+    }
+
+    private fun checkInternetStatus():Boolean {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+
+        if (isConnected) {
+            Log.d(
+                "GameView",
+                "checkInternetStatus: Connected to the internet. Cellular Data: ${activeNetwork?.isRoaming}"
+            )
+        } else {
+            Log.d("GameView", "checkInternetStatus: Not connected")
+        }
+
+
+        return isConnected
     }
 
 }

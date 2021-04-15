@@ -1,4 +1,4 @@
-package com.yourwebsite.guessthenumber
+package com.yourwebsite.guessthenumber.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,8 +6,10 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
+import com.yourwebsite.guessthenumber.HighScoreItem
+import com.yourwebsite.guessthenumber.HighScoreResult
+import com.yourwebsite.guessthenumber.R
 import com.yourwebsite.guessthenumber.adapters.HighScoreItemAdapter
-import com.yourwebsite.guessthenumber.adapters.ItunesItemAdapter
 import com.yourwebsite.guessthenumber.databinding.ActivityHighScoreBinding
 import okhttp3.*
 import java.io.IOException
